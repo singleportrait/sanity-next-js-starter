@@ -1,35 +1,57 @@
 import Link from 'next/link';
-import groq from 'groq';
-import client from '../client';
+import { getClient } from '../lib/sanityServer';
+import Layout from '../components/Layout';
+import { indexQuery } from '../lib/queries';
 
-const Index = (props) => {
-  const { posts = [] } = props;
-  
+const Index = ({ indexData }) => {
+  const {
+    logoColor,
+    seoDescription,
+    seoImage,
+  } = indexData;
+
+  // console.log('Index data', indexData);
+
   return (
-  <div>
-    <h1>Hello world :)</h1>
-    {posts.map(({
-      _id,
-      title = '',
-      slug = '',
-      publishedAt = '',
-    }) => slug && (
-      <li key={_id}>
-        <Link href="/post/[slug]" as={`/post/${slug.current}`}>
-          <a>{title}</a>
+    <Layout
+      logoColor={logoColor}
+      description={seoDescription}
+      image={seoImage}
+    >
+      <div className="flex flex-col justify-end items-start">
+        <Link href="/readings" passHref>
+          <button type="button" className="py-4 pl-4 text-left">
+            <h2>
+              Readings
+            </h2>
+          </button>
         </Link>
-        {' '}
-        ({new Date(publishedAt).toDateString()})
-      </li>
-    ))}
-  </div>
-);
-    };
+        <Link href="/artists" passHref>
+          <button type="button" className="py-4 pl-4 text-left">
+            <h2>
+              Artists
+            </h2>
+          </button>
+        </Link>
+        <Link href="/writings" passHref>
+          <button type="button" className="py-4 pl-4 -mb-4 text-left">
+            <h2>
+              Writings
+            </h2>
+          </button>
+        </Link>
+      </div>
+    </Layout>
+  );
+};
 
-Index.getInitialProps = async () => ({
-  posts: await client.fetch(groq`
-    *[_type == "post" && publishedAt < now()]|order(publishedAt desc)
-  `)
-});
+export async function getStaticProps() {
+  const indexData = await getClient().fetch(indexQuery);
+  return {
+    props: {
+      indexData,
+    },
+  };
+}
 
 export default Index;
