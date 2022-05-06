@@ -1,5 +1,5 @@
-import { readingsQuery, artistsQuery, writingsQuery } from '../../lib/queries';
-import { previewClient } from '../../lib/sanityServer';
+import indexQuery from '../../sanity/queries';
+import { previewClient } from '../../sanity/server';
 
 export default async function preview(req, res) {
   if (
@@ -16,37 +16,16 @@ export default async function preview(req, res) {
   const isDraft = document.startsWith('drafts.');
   const id = isDraft ? document.slice(7) : document;
 
-  if (id === 'readings') {
-    // Check if the readings ID exists
-    const readings = await previewClient.fetch(readingsQuery);
+  if (id === 'settings') {
+    const indexData = await previewClient.fetch(indexQuery);
 
-    if (!readings) {
-      return res.status(401).json({ message: 'Could not find readings' });
+    if (!indexData) {
+      return res.status(401).json({ message: 'Could not find settings to show on index page' });
     }
 
     res.setPreviewData({});
 
-    res.writeHead(307, { Location: '/readings' });
-  } else if (id === 'artists') {
-    const artists = await previewClient.fetch(artistsQuery);
-
-    if (!artists) {
-      return res.status(401).json({ message: 'Could not find artists' });
-    }
-
-    res.setPreviewData({});
-
-    res.writeHead(307, { Location: '/artists' });
-  } else if (id === 'writings') {
-    const writings = await previewClient.fetch(writingsQuery);
-
-    if (!writings) {
-      return res.status(401).json({ message: 'Could not find writings' });
-    }
-
-    res.setPreviewData({});
-
-    res.writeHead(307, { Location: '/writings' });
+    res.writeHead(307, { Location: '/' });
   } else {
     // console.log('No match');
     res.status(401).json({ message: 'Could not find any of those previews' });

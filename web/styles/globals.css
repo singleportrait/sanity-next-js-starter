@@ -3,55 +3,11 @@
 @tailwind utilities;
 
 html {
-  @apply font-sans text-white antialiased;
-
+  @apply font-sans;
   font-size: 15px;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.4;
   -webkit-tap-highlight-color: transparent;
-}
-
-/* Colors to match each background image */
-body {
-  background-color: #31a3b3;
-}
-
-body.page {
-  background-color: #28869a;
-}
-
-.bg {
-  @apply fixed h-screen w-screen;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  transition: background-image 0.3s ease-in-out;
-}
-
-.content {
-  @apply absolute left-1/2 transform -translate-x-1/2 w-full h-full;
-}
-
-/* Tall narrow screens */
-@media (max-aspect-ratio: 3/4) {
-  body.page .bg {
-    background-image: url('/images/marble_for_export-16_9-cyan50-black20-cropped_more.jpg');
-  }
-
-  body.index .bg {
-    background-image: url('/images/marble_for_export-16_9-full_saturation-cropped_more.jpg');
-  }
-}
-
-/* Anything wider than 3/4 */
-@media (min-aspect-ratio: 3/4) {
-  body.page .bg {
-    background-image: url('/images/marbled_for_export-dark-cyan50-black20-progressive.jpg');
-  }
-
-  body.index .bg {
-    background-image: url('/images/marbled_for_export-dark-cyan15-black5.jpg');
-  }
 }
 
 @media (min-width: 640px) {
@@ -61,11 +17,7 @@ body.page {
 }
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
-  @apply font-serif leading-tight tracking-tight;
-}
-
-h2, .h2, h3, .h3, h4, .h4 {
-  font-weight: 300;
+  @apply font-serif;
 }
 
 h1, .h1 {
@@ -82,37 +34,8 @@ h3, .h3 {
 
 h4, .h4 {
   font-size: 1.25rem;
-  font-weight: 400;
-}
-
-.articleTitle {
-  @apply font-sans text-xl font-light underline;
-}
-
-.articleTitle-sm {
-  @apply text-lg;
-}
-
-.underline-white-transparent {
-  @apply transition-all duration-300;
-
-  text-decoration-color: rgba(255, 255, 255, 0.5);
-}
-
-a:hover .underline-white-transparent,
-a.underline-white-transparent:hover {
-  text-decoration-color: rgba(255, 255, 255, 1);
 }
 
 .richTextFormatting p {
   @apply mb-4;
-}
-
-/* Calendly overrides */
-.calendly-popup {
-  overflow: hidden;
-}
-
-.calendly-popup-content {
-  margin-right: -16px;
 }

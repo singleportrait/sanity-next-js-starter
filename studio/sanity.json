@@ -1,11 +1,11 @@
 {
   "root": true,
-  "project": {
-    "name": "CHANN3L"
-  },
   "api": {
-    "projectId": "lvf7syii",
+    "projectId": "5n4ej9mc",
     "dataset": "production"
+  },
+  "project": {
+    "name": "Sanity Next JS Starter"
   },
   "plugins": [
     "@sanity/base",
