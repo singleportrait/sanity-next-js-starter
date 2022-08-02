@@ -30,7 +30,7 @@ Both apps are set up to be hosted on Vercel and be managed there. It's intended 
 - Now, you should be ready to go, and start the app using the command below!
 - To enable content previews, you'll need to set up a CORS origin host and an API key in the Sanity management admin. See instructions below.
 
-### Working
+### Developing
 
 Using Lerna, both apps in the monorepo can be started from the root folder:
 
@@ -73,14 +73,14 @@ SANITY_STUDIO_PREVIEW_SECRET // Same secret as above in Sanity's configuration
 
 ### Enabling previews
 
-You'll need to do two things at sanity.io/manage in order to show previews on the Next.js front-end:
-- Generate the `SANITY_API_TOKEN` and add this to `.env.local`
-- Add a CORS Origin host for whatever `localhost` is running the Next.js server, usually `http://localhost:3000`
-  - You'll need to allow credentials for this host
+You'll need to do two things at https://sanity.io/manage in order to show previews on the Next.js front-end:
+- Generate an API token with 'Read' permissions, and add it to `.env.local` as the `SANITY_API_TOKEN`
+- Add a CORS Origin host with 'Allow Credentials' set, for whatever port `localhost` is running the Next.js server, usually `http://localhost:3000`
 
 
 ### Vercel settings
 
 - When creating new Vercel projects for each sub-directory, you'll need to set the root directory for each app to `studio/` and `web/`, respectively.
 - As noted above, each of the 2 apps should have their respective environment variables added.
-- This could easily be Netlify or any other hosting service. The Sanity admin has a plugin installed, `sanity-plugin-vercel-deploy`, and a config file `studio/vercel.json`, that can be swapped for another host's tools.
+- This could easily be Netlify or any other hosting service. 
+- The Sanity admin has a plugin installed, `sanity-plugin-vercel-deploy`, and a config file `studio/vercel.json`, that can be swapped for another host's tools.
