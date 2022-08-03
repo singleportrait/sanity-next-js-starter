@@ -57,7 +57,7 @@ You need some environment variables in `studio/.env.local` and in Vercel for San
 ```
 SANITY_STUDIO_PRODUCTION_URL
 SANITY_STUDIO_DEVELOPMENT_URL
-SANITY_PREVIEW_SECRET // This can be whatever string you like, it's simply shared with the front-end server
+SANITY_STUDIO_PREVIEW_SECRET // This can be whatever string you like, it's simply shared with the front-end server
 ```
 
 And, a few environment variables are needed in `web/.env.development` (and also Vercel, or wherever it's hosted) for Next's build:
@@ -68,7 +68,7 @@ NEXT_PUBLIC_SANITY_PROJECT_ID
 NEXT_PUBLIC_SANITY_DATASET
 NEXT_PUBLIC_GA_TRACKING_ID
 SANITY_API_TOKEN // You'll need to create this at sanity.io/manage to enable web previews
-SANITY_STUDIO_PREVIEW_SECRET // Same secret as above in Sanity's configuration
+SANITY_PREVIEW_SECRET // Same secret as above in Sanity's configuration
 ```
 
 ### Enabling previews
