@@ -78,9 +78,27 @@ You'll need to do two things at https://sanity.io/manage in order to show previe
 - Add a CORS Origin host with 'Allow Credentials' set, for whatever port `localhost` is running the Next.js server, usually `http://localhost:3000`
 
 
-### Vercel settings
+### Vercel setup
 
-- When creating new Vercel projects for each sub-directory, you'll need to set the root directory for each app to `studio/` and `web/`, respectively.
-- As noted above, each of the 2 apps should have their respective environment variables added.
+- To run each app separately, you will create 2 projects in Vercel; one for `studio/` and one for `web/`
 - This could easily be Netlify or any other hosting service. 
 - The Sanity admin has a plugin installed, `sanity-plugin-vercel-deploy`, and a config file `studio/vercel.json`, that can be swapped for another host's tools.
+
+**Vercel instructions:**
+- First, go to https://vercel.com/new
+- Import your repo (you may have to enable Github permissions to access the repo)
+- For studio:
+  - Select 'Sanity' as the framework preset
+  - Select `studio/` as the root folder
+  - Check that `public` is the output directory
+  - Add your Sanity environment variables from `.env.development`
+  - Once this is deployed, you'll need to add this Vercel URL to the accepted CORS origins at https://www.sanity.io/manage (with credentials allowed) in order to use the studio on this new URL
+  - For any preview and branch URLs, you'll need to do the same
+- For web:
+  - Select 'Next.js' as the framework
+  - Select `web/` as the root folder
+  - Add the environment variables from `.env.local`
+- Finally, in the Sanity admin, you will create a new project in the 'Deploy' tab to allow the admin to deploy the front-end using a build hook
+  - Create a new Git build hook in your Vercel project for the `web/` directory
+  - Create a new token for your Vercel account [here](https://vercel.com/account/tokens) (with no expiration)
+  - Follow the steps [here](https://www.sanity.io/plugins/vercel-deploy) to set up the new project in the Sanity admin, using the tokens you generated above
