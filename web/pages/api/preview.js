@@ -20,7 +20,7 @@ export default async function preview(req, res) {
     const indexData = await previewClient.fetch(indexQuery);
 
     if (!indexData) {
-      return res.status(401).json({ message: 'Could not find settings to show on index page' });
+      return res.status(401).json({ message: 'Could not find content to show on index page' });
     }
 
     res.setPreviewData({});

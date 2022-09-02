@@ -1,7 +1,14 @@
 import Head from 'next/head';
+// import { useEffect } from 'react';
+// import TagManager from 'react-gtm-module';
 
 import '../styles/fonts.css';
 import '../styles/globals.css';
+
+/* If wanting to install Google Analytics, can use this code below: */
+// useEffect(() => {
+//   TagManager.initialize({ gtmId: 'GTM-NLH7WG6' });
+// }, []);
 
 const MyApp = ({ Component, pageProps }) => (
   <>
