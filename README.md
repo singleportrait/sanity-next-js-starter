@@ -52,7 +52,7 @@ yarn run dev
 
 ### Environment variables
 
-You need some environment variables in `studio/.env.local` and in Vercel for Sanity's build:
+You need some environment variables in `studio/.env.development` and in Vercel for Sanity's build:
 
 ```
 SANITY_STUDIO_PRODUCTION_URL
@@ -60,7 +60,7 @@ SANITY_STUDIO_DEVELOPMENT_URL
 SANITY_STUDIO_PREVIEW_SECRET // This can be whatever string you like, it's simply shared with the front-end server
 ```
 
-And, a few environment variables are needed in `web/.env.development` (and also Vercel, or wherever it's hosted) for Next's build:
+And, a few environment variables are needed in `web/.env.local` (and also Vercel, or wherever it's hosted) for Next's build:
 
 ```
 NEXT_PUBLIC_PROJECT_NAME
