@@ -13,11 +13,9 @@ export default () => {
             .schemaType('settings')
             .documentId('settings')
         )
-        .icon(() => <div style={{ fontSize: 22 }}>🛠</div>),
+        .icon(() => <div style={{fontSize: 22}}>🛠</div>),
       ...S.documentTypeListItems().filter((item) => {
-        return ![
-          'settings'
-        ].includes(item.getId());
+        return !['settings'].includes(item.getId());
       }),
     ]);
 };

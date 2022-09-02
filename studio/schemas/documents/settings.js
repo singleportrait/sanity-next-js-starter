@@ -36,5 +36,5 @@ export default {
       type: 'seo',
       description: 'Other pages will use this if not provided',
     },
-  ]
-}
+  ],
+};
