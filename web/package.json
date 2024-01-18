@@ -1,5 +1,6 @@
 {
   "name": "sanity-nextjs-web",
+  "private": true,
   "author": "Jenn Scheer <jenn@jennscheer.com>",
   "version": "1.0.0",
   "main": "index.js",

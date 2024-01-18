@@ -5,7 +5,7 @@ Both apps are set up to be hosted on Vercel and be managed there. It's intended 
 ### Installation
 
 - Clone the repo and move into the root repo folder
-- Set up a new Sanity project via the command line, using the Sanity CLI (which needs to be installed beforehand)
+- Set up a new Sanity project (or connect an existing one) via the command line, using the Sanity CLI (which needs to be installed beforehand)
   ```sh
     sanity login
     cd studio/ # Move into the Sanity studio folder
@@ -20,10 +20,10 @@ Both apps are set up to be hosted on Vercel and be managed there. It's intended 
   ```
 - Rename `studio/.env.development.test` to `studio/.env.development` and update Sanity production URL and preview secret
 - Rename `web/.env.local.test` to `web/.env.local` and update the project name, the newly-generated Sanity project ID, and preview secret
-- Install Lerna globally, and then bootstrap the project, which will install all packages. From the root repo folder:
+- Install Lerna globally, and then install the project from the root folder, which will also install the nested workspaces `/studio` and `/web`:
   ```sh
     npm install --global lerna
-    lerna boostrap
+    yarn install
   ```
   - This app is a monorepo that uses Lerna to install all packages in the main and sub-folders at once.
 - *Housekeeping:* Update the project names in `studio/package.json` and `web/package.json`
