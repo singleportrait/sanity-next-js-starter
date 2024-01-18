@@ -2,12 +2,15 @@
   "name": "root",
   "private": true,
   "scripts": {
-    "dev": "lerna run dev --parallel",
-    "build": "lerna bootstrap && lerna run build --parallel"
+    "dev": "npx lerna run dev",
+    "build": "npx lerna run build"
   },
+  "workspaces": [
+    "studio/",
+    "web/"
+  ],
   "devDependencies": {
-    "lerna": "^5.1.8",
-    "nx": "^14.4.2"
+    "lerna": "^8.0.2"
   },
   "dependencies": {}
 }
